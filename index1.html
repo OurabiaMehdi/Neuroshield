@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NeuroShield Academy — Landing</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f6f7f8;
+            --white: #ffffff;
+            --muted: #6b7280;
+            --text: #0f2130;
+            --accent: #10b981;
+            --accent-2: #06b6d4;
+            --dark-footer: #17232b;
+            --container: 1400px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .site-header {
+            position: sticky;
+            top: 20px;
+            display: flex;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .nav-shell {
+            width: calc(100% - 160px);
+            max-width: var(--container);
+            background: var(--white);
+            border-radius: 46px;
+            padding: 18px 36px;
+            box-shadow: 0 8px 20px rgba(12, 16, 20, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: #0f3b36;
+            font-size: 20px;
+        }
+
+        .logo-accent {
+            color: var(--accent);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #123239;
+            font-weight: 600;
+            padding: 10px 12px;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #fff;
+            background: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom right, #e6fdf6, #f6f7f8);
+        }
+
+        .hero-tagline {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.1;
+        }
+
+        .hero-sub {
+            font-size: 22px;
+            margin: 20px auto 40px auto;
+            max-width: 800px;
+            color: #36454a;
+        }
+
+        /* Redesigned about section without rectangle background */
+        .hero-about {
+            max-width: 1200px;
+            margin: 60px auto;
+            text-align: left;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .hero-about h2 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 32px;
+            text-align: left;
+            grid-column: 1 / -1;
+            margin-bottom: 30px;
+        }
+
+        .hero-about .intro-text {
+            grid-column: 1 / -1;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #36454a;
+        }
+
+        .hero-about .mission-vision {
+            display: contents;
+        }
+
+        .hero-about h3 {
+            color: var(--accent);
+            font-size: 24px;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+
+        /* Updated mission and vision sections to use bubble styling like the services */
+        .hero-about .mission-section,
+        .hero-about .vision-section {
+            background: #fff;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 12px 24px rgba(12, 16, 20, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-about .mission-section:hover,
+        .hero-about .vision-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+        }
+
+        /* Updated values section to use bubble styling */
+        .hero-about .values-section {
+            grid-column: 1 / -1;
+            background: #fff;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 12px 24px rgba(12, 16, 20, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .hero-about .values-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+        }
+
+        .hero-about .values-section ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .hero-about .values-section li {
+            padding: 15px;
+            border-radius: 8px;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .hero-about {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .hero-about .values-section ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+
+        /* Services */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .pillar {
+            background: #fff;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 12px 24px rgba(12, 16, 20, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pillar:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+        }
+
+        .pillar h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        /* Why */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .why-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(12, 16, 20, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .why-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(16, 185, 129, 0.15);
+        }
+
+        .why-item h4 {
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+
+        /* Join */
+        .join-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* Updated join invitation text styling */
+        .join-invitation {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px auto 40px auto;
+            max-width: 800px;
+            color: #36454a;
+        }
+
+        /* Added proper CTA button styling */
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #0d9668;
+            transform: translateY(-2px);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        /* Updated contact positioning for symmetry */
+        .contact:first-child {
+            justify-self: start;
+            margin-left: 20px;
+        }
+
+        .contact:last-child {
+            justify-self: end;
+            margin-right: 20px;
+        }
+
+        /* Updated contact and legal links to be green without underlines */
+        .contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            color: var(--accent-2);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--dark-footer);
+            color: #c9d6db;
+            padding: 20px;
+        }
+
+        .footer-inner {
+            max-width: var(--container);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-shell">
+            <div class="logo"><span class="logo-accent">Neuro</span>Shield Academy</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#contact" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero section show">
+            <div>
+                <h1 class="hero-tagline">Security • Intelligence • Innovation</h1>
+                <p class="hero-sub">Empowering the future through cybersecurity, advanced education, and AI-driven
+                    automation.</p>
+
+                <!-- Moved CTA buttons directly below the subtitle -->
+                <div class="cta-row">
+                    <a href="#home" class="btn">Explore the Academy</a>
+                    <a href="#services" class="btn">Discover SmarTings</a>
+                    <a href="#contact" class="btn">Strengthen Security</a>
+                </div>
+
+                <!-- Redesigned about section without background box -->
+                <div class="hero-about">
+                    <h2>About NeuroShield — Who We Are</h2>
+                    <div class="intro-text">
+                        NeuroShield is a pioneering Algerian startup operating at the intersection of cybersecurity,
+                        artificial intelligence, and digital education. We deliver intelligent, secure, and scalable
+                        solutions that fortify organizations, empower talent, and contribute to national digital
+                        sovereignty.
+                    </div>
+
+                    <!-- Restructured mission and vision in grid layout -->
+                    <div class="mission-section">
+                        <h3>Mission</h3>
+                        <p>To design and deliver innovative cybersecurity and AI-driven solutions that build secure,
+                            intelligent digital ecosystems.</p>
+                    </div>
+
+                    <div class="vision-section">
+                        <h3>Vision</h3>
+                        <p>To become a trusted regional and global hub for cybersecurity, AI innovation, and talent
+                            development — shaping the future of digital resilience in Algeria and beyond.</p>
+                    </div>
+
+                    <!-- Enhanced core values section with better visual structure -->
+                    <div class="values-section">
+                        <h3>Core Values</h3>
+                        <ul>
+                            <li><strong>Security</strong> – Every solution is built with protection at its core.</li>
+                            <li><strong>Innovation</strong> – We embrace emerging technologies to solve tomorrow's
+                                challenges.</li>
+                            <li><strong>Trust</strong> – Integrity and reliability guide all our actions.</li>
+                            <li><strong>National Impact</strong> – Committed to advancing Algeria's leadership in
+                                cybersecurity and AI.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Services (Three Strategic Pillars)</h2>
+                <div class="pillars">
+                    <article class="pillar">
+                        <h3>🔹 NeuroShield Academy</h3>
+                        <ul>
+                            <li>Practical, industry-aligned training programs in cybersecurity, AI, and safe
+                                programming.</li>
+                            <li>Specialized departments: Networks & Cloud Security, AI for Security, IT & Programming,
+                                Systems Security, CTF Challenges.</li>
+                            <li>Hands-on learning with real-world applications and a community-driven experience.</li>
+                        </ul>
+                        <p><strong>Goal:</strong> Equip the next generation of professionals with skills that meet the
+                            demands of today's and tomorrow's digital landscape.</p>
+                    </article>
+                    <article class="pillar">
+                        <h3>🔹 NeuroShield SmarTings</h3>
+                        <ul>
+                            <li>AI and automation solutions tailored for businesses, institutions, and governments.</li>
+                            <li>Process automation to reduce inefficiencies and smart digital platforms for education,
+                                healthcare, and enterprises.</li>
+                            <li>Intelligent analytics & reporting for data-driven decisions.</li>
+                        </ul>
+                        <p><strong>Goal:</strong> Simplify operations, optimize performance, and deliver secure,
+                            scalable automation.</p>
+                    </article>
+                    <article class="pillar">
+                        <h3>🔹 NeuroShield Security</h3>
+                        <ul>
+                            <li>End-to-end cybersecurity and intelligence services to protect organizations.</li>
+                            <li>Threat monitoring & intelligence for proactive defense; secure systems design for
+                                critical infrastructure.</li>
+                            <li>Consultancy & awareness programs to strengthen cyber hygiene.</li>
+                        </ul>
+                        <p><strong>Goal:</strong> Build resilience, protect assets, and ensure continuity in an
+                            increasingly complex threat environment.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="why" class="section">
+            <div class="container">
+                <h2 class="section-title">Why Choose NeuroShield</h2>
+                <div class="why-grid">
+                    <div class="why-item">
+                        <h4>Comprehensive Expertise</h4>
+                        <p>From training to automation to security, we provide a complete ecosystem of solutions.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Security-First Approach</h4>
+                        <p>Every system and service is engineered with protection as a priority.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Innovation-Driven</h4>
+                        <p>We integrate AI and modern technologies into every solution.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Scalable & Reliable</h4>
+                        <p>Our platforms and services are designed to grow alongside your organization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join" class="section">
+            <div class="container">
+                <h2 class="section-title">Join Us (Careers & Community)</h2>
+                <!-- Moved invitation text below the title and centered it -->
+                <p class="join-invitation">We invite students, professionals, and institutions to join NeuroShield's
+                    journey and
+                    become part of Algeria's rising cybersecurity and AI ecosystem</p>
+                <div class="join-ctas">
+                    <a href="#home" class="btn">Join the Academy</a>
+                    <a href="#contact" class="btn">Partner With Us</a>
+                    <a href="#contact" class="btn">Explore Career Opportunities</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container contact-grid">
+                <div class="contact">
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> <a href="mailto:contact@neuroshield.com">contact@neuroshield.com</a></p>
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">X (Twitter)</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">(coming soon)</a></li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Security Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <p>© Neuroshield Academy 2025. All rights reserved.</p>
+            </div>
+            <div><small>Neuroshield Academy. All rights reserved.</small></div>
+        </div>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        sections.forEach(s => observer.observe(s));
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (scrollY >= sectionTop) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
